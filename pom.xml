@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<mule.version>3.8.0</mule.version>
+		<mule.version>3.8.3</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
 	</properties>
 
@@ -34,7 +34,7 @@
 				<version>2.1.1</version>
 				<configuration>
 					<deploymentType>standalone</deploymentType>
-					<muleVersion>3.8.0</muleVersion>
+					<muleHome>/mule-ee-distribution-standalone-3.8.4</muleHome>
 				</configuration>
 				<executions>
 					<execution>
