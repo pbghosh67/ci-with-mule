@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:encryption="http://www.mulesoft.org/schema/mule/encryption" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:pgp="http://www.mulesoft.org/schema/mule/pgp"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/pgp http://www.mulesoft.org/schema/mule/pgp/3.8/mule-pgp.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.mulesoft.org/schema/mule/encryption http://www.mulesoft.org/schema/mule/encryption/current/mule-encryption.xsd">
+	<spring:beans>
+		<spring:bean id="pgpKeyManager" name="pgpKeyManager"
+			class="org.mule.module.pgp.PGPKeyRingImpl" init-method="initialise">
+			<spring:property name="secretKeyRingFileName" value="secring.gpg" />
+			<spring:property name="secretAliasId" value="${public.KeyId.LongValue}" />
+			<spring:property name="secretPassphrase" value="${secret.Passphrase}" />
+			<spring:property name="publicKeyRingFileName" value="pubring.gpg" />
+		</spring:bean>
+		<spring:bean id="credentialAccessor" name="credentialAccessor"
+			class="com.pgp.example.MyCredentialAccessor">
+            <spring:property name="credentials" value="Priyobroto (TestingKey) &lt;pbghosh@test.com&gt;"/>
+		</spring:bean>
+	</spring:beans>
+	<pgp:security-manager name="muleSecurityManager" id="_muleSecurityManager" doc:name="muleSecurityManager">
+		<pgp:security-provider name="pgpSecurityProvider"
+			keyManager-ref="pgpKeyManager" />
+		<pgp:keybased-encryption-strategy
+			name="keyBasedEncryptionStrategy" keyManager-ref="pgpKeyManager"
+			credentialsAccessor-ref="credentialAccessor" />
+	</pgp:security-manager>
+	<http:listener-config name="HTTP_Listener_Configuration"
+		host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" />
+    <flow name="processPGPEncrypt">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/encrypt" doc:name="HTTP"/>
+        <set-payload value="#[message.inboundProperties.'http.query.params'.msg]" doc:name="Set Payload"/>
+        <encrypt-transformer doc:name="pgpEncryptMsg" strategy-ref="keyBasedEncryptionStrategy" />
+        <object-to-string-transformer doc:name="Object to String"/>
+        <message-properties-transformer doc:name="Message Properties">
+            <add-message-property key="originalMessage" value="#[message.inboundProperties.'http.query.params'.msg]" />
+            <add-message-property key="encryptedMessage" value="#[payload]"/>
+        </message-properties-transformer>
+        <string-to-byte-array-transformer doc:name="String to Byte Array"/>
+        <request-reply doc:name="Request-Reply">
+            <vm:outbound-endpoint exchange-pattern="one-way" path="decrypt" doc:name="VM"/>
+            <vm:inbound-endpoint exchange-pattern="one-way" path="result" doc:name="VM"/>
+        </request-reply>
+        
+    </flow>
+    <flow name="processPGPDecrypt">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="decrypt" doc:name="VM"/>
+        <set-payload value="#[payload]" doc:name="Set Payload"/>
+        <decrypt-transformer doc:name="pgpDecryptMsg" strategy-ref="keyBasedEncryptionStrategy"></decrypt-transformer>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <set-payload value="#['\n\nOriginal Message: '] #[message.inboundProperties.originalMessage] #['\n\nEncrypted Message:\n\n '] #[message.inboundProperties.encryptedMessage] #['\n\nDecrypted Message: '] #[message.payload] " doc:name="Set Payload"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <vm:outbound-endpoint exchange-pattern="one-way" path="result" doc:name="VM"/>
+    </flow>
+</mule>
