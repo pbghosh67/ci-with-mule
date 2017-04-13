@@ -34,7 +34,7 @@
 				<version>2.1.1</version>
 				<configuration>
 					<deploymentType>standalone</deploymentType>
-					<muleVersion>3.8.3</muleVersion>
+					<muleVersion>3.8.0</muleVersion>
 				</configuration>
 				<executions>
 					<execution>
