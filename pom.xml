@@ -190,12 +190,6 @@
 			<layout>default</layout> </repository> -->
 
 		<repository>
-			<id>Central</id>
-			<name>Central</name>
-			<url>http://repo1.maven.org/maven2/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>http://repository.mulesoft.org/releases/</url>
@@ -207,6 +201,13 @@
 			<url>http://repository.mulesoft.org/snapshots/</url>
 			<layout>default</layout>
 		</repository>
+		<repository>
+			<id>Central</id>
+			<name>Central</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
