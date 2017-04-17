@@ -162,6 +162,12 @@
 
 	<repositories>
 		<repository>
+			<id>mulesoft-public</id>
+			<name>MuleSoft Public Repository</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>http://repository.mulesoft.org/releases/</url>
@@ -171,12 +177,6 @@
 			<id>mulesoft-snapshots</id>
 			<name>MuleSoft Snapshot Repository</name>
 			<url>http://repository.mulesoft.org/snapshots/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-public</id>
-			<name>MuleSoft Public Repository</name>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
 			<layout>default</layout>
 		</repository>
 
