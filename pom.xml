@@ -34,7 +34,7 @@
 				<version>2.1.1</version>
 				<configuration>
 					<deploymentType>standalone</deploymentType>
-					<muleHome>/mule-ee-distribution-standalone-3.8.4</muleHome>
+					<muleHome>/mule-enterprise-standalone-3.8.3</muleHome>
 				</configuration>
 				<executions>
 					<execution>
