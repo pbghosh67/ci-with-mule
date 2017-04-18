@@ -168,7 +168,7 @@
 			<groupId>org.mule.tests</groupId>
 			<artifactId>mule-tests-functional</artifactId>
 			<version>${mule.version}</version>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
