@@ -187,19 +187,7 @@
 			<name>MuleSoft Releases Repository</name> <url>http://repository.mulesoft.org/releases/</url> 
 			<layout>default</layout> </repository> <repository> <id>mulesoft-snapshots</id> 
 			<name>MuleSoft Snapshot Repository</name> <url>http://repository.mulesoft.org/snapshots/</url> 
-			<layout>default</layout> </repository> -->
-		<repository>
-			<id>MuleRepository</id>
-			<name>MuleRepository</name>
-			<url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
+			<layout>default</layout> </repository> 
 		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
@@ -217,7 +205,7 @@
 			<name>Central</name>
 			<url>http://repo1.maven.org/maven2/</url>
 			<layout>default</layout>
-		</repository>
+		</repository>-->
 
 	</repositories>
 	<pluginRepositories>
