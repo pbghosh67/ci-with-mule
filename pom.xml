@@ -26,25 +26,6 @@
 				<extensions>true</extensions>
 				<configuration>
 					<copyToAppsDirectory>true</copyToAppsDirectory>
-
-					<inclusions>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-extensions-support</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-extensions-spring-support</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>mule-module-objectstore</artifactId>
-						</inclusion>
-						<inclusion>
-							<groupId>org.mule.modules</groupId>
-							<artifactId>slack-connector</artifactId>
-						</inclusion>
-					</inclusions>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -106,11 +87,6 @@
 	<!-- Mule Dependencies -->
 	<dependencies>
 		<!-- Xml configuration -->
-		<dependency>
-         <groupId>org.mule.edi</groupId>
-         <artifactId>edi</artifactId>
-         <version>1.2.2</version>
-     </dependency>
 		<dependency>
 			<groupId>com.mulesoft.muleesb</groupId>
 			<artifactId>mule-core-ee</artifactId>
