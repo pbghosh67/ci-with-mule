@@ -107,6 +107,11 @@
 	<dependencies>
 		<!-- Xml configuration -->
 		<dependency>
+         <groupId>org.mule.edi</groupId>
+         <artifactId>edi</artifactId>
+         <version>1.2.2</version>
+     </dependency>
+		<dependency>
 			<groupId>com.mulesoft.muleesb</groupId>
 			<artifactId>mule-core-ee</artifactId>
 			<version>${mule.version}</version>
