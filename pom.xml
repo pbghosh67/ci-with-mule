@@ -28,13 +28,25 @@
 					<!-- <copyToAppsDirectory>true</copyToAppsDirectory> -->
 				</configuration>
 			</plugin>
+			<!-- <plugin> <groupId>org.mule.tools.maven</groupId> <artifactId>mule-maven-plugin</artifactId> 
+				<version>2.1.1</version> <configuration> <deploymentType>standalone</deploymentType> 
+				<muleHome>/mule-enterprise-standalone-3.8.3</muleHome> </configuration> <executions> 
+				<execution> <id>deploy</id> <phase>deploy</phase> <goals> <goal>deploy</goal> 
+				</goals> </execution> </executions> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-deploy-plugin</artifactId> <version>2.8.2</version> <configuration> 
+				<skip>true</skip> </configuration> </plugin> -->
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>2.1.1</version>
 				<configuration>
-					<deploymentType>standalone</deploymentType>
-					<muleHome>/mule-enterprise-standalone-3.8.3</muleHome>
+					<deploymentType>arm</deploymentType>
+					<username>priyobroto67</username>
+					<password>India@9836733341</password>
+					<target>local-server</target>
+					<!-- One of: server, serverGroup, cluster -->
+					<targetType>server</targetType>
+					<environment>Production</environment>
 				</configuration>
 				<executions>
 					<execution>
@@ -45,14 +57,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -168,45 +172,26 @@
 			<name>MuleSoft Releases Repository</name> <url>http://repository.mulesoft.org/releases/</url> 
 			<layout>default</layout> </repository> <repository> <id>mulesoft-snapshots</id> 
 			<name>MuleSoft Snapshot Repository</name> <url>http://repository.mulesoft.org/snapshots/</url> 
-			<layout>default</layout> </repository> 
-		<repository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<url>http://repository.mulesoft.org/releases/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>mulesoft-snapshots</id>
-			<name>MuleSoft Snapshots Repository</name>
-			<url>http://repository.mulesoft.org/snapshots/</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
-			<id>Central</id>
-			<name>Central</name>
-			<url>http://repo1.maven.org/maven2/</url>
-			<layout>default</layout>
-		</repository>-->
+			<layout>default</layout> </repository> <repository> <id>mulesoft-releases</id> 
+			<name>MuleSoft Releases Repository</name> <url>http://repository.mulesoft.org/releases/</url> 
+			<layout>default</layout> </repository> <repository> <id>mulesoft-snapshots</id> 
+			<name>MuleSoft Snapshots Repository</name> <url>http://repository.mulesoft.org/snapshots/</url> 
+			<layout>default</layout> </repository> <repository> <id>Central</id> <name>Central</name> 
+			<url>http://repo1.maven.org/maven2/</url> <layout>default</layout> </repository> -->
 
 	</repositories>
 	<pluginRepositories>
-	<pluginRepository>
-        <id>mule-ee-public</id>
-        <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-    </pluginRepository>
-    
-		<!-- <pluginRepository>
-			<id>mulesoft-release</id>
-			<name>mulesoft release repository</name>
-			<layout>default</layout>
-			<url>http://repository.mulesoft.org/releases/</url>
+		<pluginRepository>
+			<id>mule-ee-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</pluginRepository> -->
+		</pluginRepository>
+
+		<!-- <pluginRepository> <id>mulesoft-release</id> <name>mulesoft release 
+			repository</name> <layout>default</layout> <url>http://repository.mulesoft.org/releases/</url> 
+			<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> -->
 		<!-- <pluginRepository> <id>mulesoft-release</id> <name>mulesoft release 
 			repository</name> <layout>default</layout> <url>http://repository.mulesoft.org/releases/</url> 
 			<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> <pluginRepository> 
