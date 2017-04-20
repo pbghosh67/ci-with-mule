@@ -43,7 +43,7 @@
 					<deploymentType>arm</deploymentType>
 					<username>priyobroto67</username>
 					<password>India@9836733341</password>
-					<target>local-server</target>
+					<target>standalone-group</target>
 					<!-- One of: server, serverGroup, cluster -->
 					<targetType>server</targetType>
 					<environment>Production</environment>
