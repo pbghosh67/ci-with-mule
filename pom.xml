@@ -45,7 +45,7 @@
 					<password>India@9836733341</password>
 					<target>standalone-group</target>
 					<!-- One of: server, serverGroup, cluster -->
-					<targetType>server</targetType>
+					<targetType>serverGroup</targetType>
 					<environment>Production</environment>
 				</configuration>
 				<executions>
