@@ -41,7 +41,7 @@
 				<version>2.1.1</version>
 				<configuration>
 					<deploymentType>arm</deploymentType>
-					<server>anypoint</server>
+					<serverId>anypoint</serverId>
 					<target>server1</target>
 					<!-- One of: server, serverGroup, cluster -->
 					<targetType>server</targetType>
