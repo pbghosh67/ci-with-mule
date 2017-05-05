@@ -50,10 +50,8 @@ http://www.mulesoft.org/schema/mule/encryption http://www.mulesoft.org/schema/mu
             <add-message-property key="encryptedMessage" value="#[payload]"/>
         </message-properties-transformer>
         <string-to-byte-array-transformer doc:name="String to Byte Array"/>
-        <request-reply doc:name="Request-Reply">
-            <vm:outbound-endpoint exchange-pattern="one-way" path="decrypt" doc:name="VM"/>
-            <vm:inbound-endpoint exchange-pattern="one-way" path="result" doc:name="VM"/>
-        </request-reply>
+        <vm:outbound-endpoint exchange-pattern="one-way" path="decrypt" doc:name="VM"/>
+
         
     </flow>
     <flow name="processPGPDecrypt">
@@ -63,6 +61,6 @@ http://www.mulesoft.org/schema/mule/encryption http://www.mulesoft.org/schema/mu
         <object-to-string-transformer doc:name="Object to String"/>
         <set-payload value="#['\n\nOriginal Message: '] #[message.inboundProperties.originalMessage] #['\n\nEncrypted Message:\n\n '] #[message.inboundProperties.encryptedMessage] #['\n\nDecrypted Message: '] #[message.payload] " doc:name="Set Payload"/>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-        <vm:outbound-endpoint exchange-pattern="one-way" path="result" doc:name="VM"/>
+
     </flow>
 </mule>
