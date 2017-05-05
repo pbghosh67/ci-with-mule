@@ -40,7 +40,6 @@
 				<version>2.1.1</version>
 				<configuration>
 					<deploymentType>arm</deploymentType>
-					<!-- <serverId>anypoint</serverId> -->
 					<username>${username}</username>
 					<password>${password}</password>
 					<target>server1</target>
