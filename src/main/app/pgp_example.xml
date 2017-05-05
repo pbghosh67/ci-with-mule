@@ -40,7 +40,7 @@ http://www.mulesoft.org/schema/mule/encryption http://www.mulesoft.org/schema/mu
             <file:filename-regex-filter pattern="^.*\.([tT][xX][tT]??)$" caseSensitive="false"/>
         </file:inbound-endpoint>
         <object-to-string-transformer doc:name="Object to String"/>
-        <splitter expression="#[org.apache.commons.lang3.StringUtils.split(&quot;\n\r&quot;)]" doc:name="Splitter"/>
+        <splitter expression="#[org.apache.commons.lang3.StringUtils.split(payload,'\n\r')]" doc:name="Splitter"/>
 
         <!--  <set-payload value="#[message.inboundProperties.'http.query.params'.msg]" doc:name="Set Payload"/> -->
         <encrypt-transformer doc:name="pgpEncryptMsg" strategy-ref="keyBasedEncryptionStrategy" />
